@@ -2,8 +2,8 @@ import { Viking } from "./type_perso/vikings";
 import { Bouclier } from "./équipements/bouclier";
 
 export class Commbat{
-    private _viking_1: Viking
-    private _viking_2: Viking
+    private _viking_1: Viking;
+    private _viking_2: Viking;
 
     constructor(viking_1:Viking, viking_2:Viking) { 
         this._viking_1 = viking_1
@@ -23,7 +23,7 @@ export class Commbat{
         while (this._viking_1.estVivant() && this._viking_2.estVivant()) {
             const forcePourCeTour = attaquant.recupererForce()
             console.log(`${attaquant.name_get} attaque, sa force est de ${forcePourCeTour}`);
-            defenseur.prendDesDegats(forcePourCeTour)
+            defenseur.prendDesDegats(forcePourCeTour) 
             console.log(`${defenseur.name_get} à ${defenseur.sante_get}hp restant`);
             console.log()
 
@@ -41,5 +41,22 @@ export class Commbat{
         else{
             console.log("le vainqueur est",this._viking_2.name_get);
         }
+    }
+
+
+
+
+    public get viking_2_get(): Viking {
+        return this._viking_2;
+    }
+    public set viking_2(viking_2_set: Viking) {
+        this._viking_2 = viking_2_set;
+    }
+
+    public get viking_1_get(): Viking {
+        return this._viking_1;
+    }
+    public set viking_1(viking_1_set: Viking) {
+        this._viking_1 = viking_1_set;
     }
 } 

@@ -23,14 +23,22 @@ export class Viking{
         return Math.floor(Math.random() * this._force + 1) 
     }
 
+    forceCretique(degatcritique:number){
+
+    }
+
     prendDesDegats(degats: number){
+        let chancecritique = Math.floor(Math.random()*101)    
         if (degats < this._bouclier.defense_get) {
             degats = 0
             console.log(`${this._name} à paré, dégat ${degats}`);
         }
+        else if(chancecritique >= 70) {
+            degats *= 2
+            console.log(`critique réussie ${chancecritique}%: ${degats} de dégats`);
+        }
         this._sante = this._sante - degats
     }
-
 
     attaque(adversaire: Viking){
         adversaire.prendDesDegats(this.recupererForce())
@@ -41,7 +49,7 @@ export class Viking{
     }
 
 
-    
+
     public get name_get():string {
         return this._name;
     }
