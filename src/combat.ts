@@ -1,6 +1,6 @@
 import { count } from "console";
-import { Viking } from "./vikings";
-import { Bouclier } from "./bouclier";
+import { Viking } from "./classe_perso/vikings";
+import { Bouclier } from "./équipements/bouclier";
 
 export class Commbat{
     private _viking_1: Viking

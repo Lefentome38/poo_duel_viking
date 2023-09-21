@@ -1,4 +1,4 @@
-import { Bouclier } from "./bouclier"
+import { Bouclier } from "../équipements/bouclier"
 
 export class Viking{
     private _name: string
@@ -21,10 +21,6 @@ export class Viking{
 
     recupererForce(){
         return Math.floor(Math.random() * this._force + 1) 
-    }
-
-    degatparer(){
-        
     }
 
     prendDesDegats(degats: number){
