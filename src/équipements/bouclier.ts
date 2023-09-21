@@ -7,10 +7,10 @@ export class Bouclier{
         this._defense = defense
     }
 
-    public get b_name():string {
+    public get b_name_get():string {
         return this._b_name;
     }
-    public get defense():number {
+    public get defense_get():number {
         return this._defense;
     }
 }
