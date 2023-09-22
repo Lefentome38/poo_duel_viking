@@ -14,7 +14,7 @@ export class Parramettre_metier{
     private _arme: string
     
 
-    
+
     constructor( name: string, sante: number, force: number,critique:number, intelligence:number, mana:number , vitesse: number, bouclier:Bouclier, arme: string){
         this._name = name
         this._sante = sante
@@ -38,15 +38,16 @@ export class Parramettre_metier{
 
     prendDesDegats(degats: number){
         let chancecritique = Math.floor(Math.random()*101)           
-        if (degats < this._bouclier.defense_get) {
+        if(chancecritique <= (10 + this._critique)) {
+            degats *= 2
+            console.log(`critique réussie: ${degats} de dégats`);
+        }
+        
+        else if (degats < this._bouclier.defense_get) {
             degats = 0
             console.log(`${this._name} à paré, dégat ${degats}`);
         }       
         
-        else if(chancecritique <= (10 + this._critique)) {
-            degats *= 2
-            console.log(`critique réussie: ${degats} de dégats`);
-        }
         this._sante = this._sante - degats
     }
 

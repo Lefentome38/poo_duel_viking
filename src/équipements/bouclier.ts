@@ -7,8 +7,11 @@ export class Bouclier{
         this._defense = defense
     }
 
-    degatspare(degatspare:number){
-
+    degatspare(degats:number): void{
+        if (degats < this._defense) {
+            degats = 0
+            console.log(`${this._b_name} à paré, dégat ${degats}`);
+        }  
     }
 
 
