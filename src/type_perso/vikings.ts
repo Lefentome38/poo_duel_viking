@@ -1,18 +1,19 @@
 import { Parramettre_metier } from "../parrametres_metier"
-import { Bouclier } from "../équipements/bouclier"
+import { Bouclier,bouclierV1,bouclierV2 } from "../équipements/bouclier"
 
 export class Viking extends Parramettre_metier {
 
     constructor( name: string, arme: string, bouclier:Bouclier){
-        let sante : number = 25
-        let force : number = 4
-        let vitesse : number = 2
-        let critique = 8
+        let sante : number =  20 //25
+        let force : number = 10 //4
+        let critique : number = 8 //8
+        let intelligence: number = 0
+        let mana : number = 0
+        let vitesse : number = 0 //2
 
-        super(name, sante, force, vitesse, critique, arme, bouclier)
-    }
-
-    info_viking(){
-        console.log(`${this.name_get} ${this.sante_get}hp, arme '${this.arme_get}' bouclier '${this.bouclier_get.b_name_get}' de résistence ${this.bouclier_get.defense_get} "${this.critique_get}"`);
+        super(name, sante, force, critique, intelligence, mana, vitesse, bouclier, arme)
     }
 }
+
+export const V1 = new Viking("Ardras","Yldia",bouclierV1)
+export const V2 = new Viking("Thor","Mjöllnir",bouclierV2)

@@ -7,6 +7,9 @@ export class Bouclier{
         this._defense = defense
     }
 
+    degatspare(degatspare:number){
+
+    }
 
 
     public get b_name_get(): string {
@@ -24,5 +27,7 @@ export class Bouclier{
     }
 }
 
-export const bouclierV2 = new Bouclier("Thorgal",3)
+export const bouclierV0 = new Bouclier("",0)
 export const bouclierV1 = new Bouclier("Dome d'Acier",4)
+export const bouclierV2 = new Bouclier("Thorgal",3)
+

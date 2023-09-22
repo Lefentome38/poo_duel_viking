@@ -1,4 +1,3 @@
-import { Viking } from "./type_perso/vikings"
 import { Bouclier } from "./équipements/bouclier"
 
 export class Parramettre_metier{
@@ -7,16 +6,24 @@ export class Parramettre_metier{
     private _sante: number 
     private _force: number
     private _vitesse: number
+    private _intelligence: number
+    private _mana: number
     private _critique: number
+
     private _bouclier: Bouclier
     private _arme: string
     
-    constructor( name: string, sante: number, force: number,critique:number, arme: string, bouclier:Bouclier, vitesse: number){
+
+    
+    constructor( name: string, sante: number, force: number,critique:number, intelligence:number, mana:number , vitesse: number, bouclier:Bouclier, arme: string){
         this._name = name
         this._sante = sante
         this._force = force
         this._vitesse = vitesse
+        this. _intelligence = intelligence
+        this. _mana = mana
         this._critique = critique
+        
         this._bouclier = bouclier
         this._arme = arme
     }
@@ -30,22 +37,31 @@ export class Parramettre_metier{
     }
 
     prendDesDegats(degats: number){
-        let chancecritique = Math.floor(Math.random()*101)   
-
+        let chancecritique = Math.floor(Math.random()*101)           
         if (degats < this._bouclier.defense_get) {
             degats = 0
             console.log(`${this._name} à paré, dégat ${degats}`);
         }       
         
-        else if(chancecritique <= this._critique) {
+        else if(chancecritique <= (10 + this._critique)) {
             degats *= 2
             console.log(`critique réussie: ${degats} de dégats`);
         }
         this._sante = this._sante - degats
     }
 
-    attaque(adversaire: Viking){
+    attaque(adversaire: Parramettre_metier){
         adversaire.prendDesDegats(this.recupererForce())
+    }
+
+    info_viking(){
+        console.log(`${this._name} ${this._sante}hp, arme '${this._arme}' bouclier '${this._bouclier.b_name_get}' de résistence ${this.bouclier_get.defense_get}, chance critique "+${this._critique}%"`);
+    }
+    info_archer(){
+        console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
+    }
+    info_chavalier(){
+        console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
     }
 
 
@@ -74,8 +90,22 @@ export class Parramettre_metier{
     public get vitesse(): number {
         return this._vitesse
     }
-    public set vitesse(value: number) {
-        this._vitesse = value
+    public set vitesse(vitesse_set: number) {
+        this._vitesse = vitesse_set
+    }
+
+    public get intelligence_get(): number {
+        return this._intelligence
+    }
+    public set intelligence(intelligence_set: number) {
+        this._intelligence = intelligence_set
+    }
+
+    public get mana_get(): number {
+        return this._mana
+    }
+    public set mana(mana_set: number) {
+        this._mana = mana_set
     }
 
     public get critique_get(): number {

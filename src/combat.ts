@@ -1,28 +1,36 @@
 import { Archer } from "./type_perso/archer";
 import { Viking } from "./type_perso/vikings";
-import { Parramettre_metier } from "./parrametres_metier";
-import { Bouclier } from "./équipements/bouclier";
+import { Chevalier } from "./type_perso/chevalier";
 
 export class Commbat{
     private _viking_1: Viking;
     private _viking_2: Viking;
     private _archer_1: Archer;
+    private _chevalier_1: Chevalier
+
+    private _combattant: []
 
 
-
-    constructor(viking_1:Viking, viking_2:Viking, archer_2: Archer) { 
+    constructor(viking_1:Viking, viking_2:Viking, archer_2: Archer, chevalier_1:Chevalier) { 
         this._viking_1 = viking_1
         this._viking_2 = viking_2
         this._archer_1 = archer_2
+        this._chevalier_1 = chevalier_1
+
+        this._combattant = []
     }
 
-    public lancer_combat(): void {
-        console.log(`le combat va commencer: nos deux vikings sont '${this._viking_1.name_get}' et '${this._viking_2.name_get}'`);
+    lescombattans(){
+        this._combattant = []
+    }
+
+    public lancer_combat() {
+        console.log(`le combat va commencer: nos deux combattans sont '${this._viking_1.name_get}' et '${this._viking_2.name_get}'`);
     }
 
     public simulation_combat() {
         console.log("debut de la simulation");
-
+        
         let attaquant = this._viking_1
         let defenseur = this._viking_2
         
