@@ -1,13 +1,19 @@
+import { Archer } from "./type_perso/archer";
 import { Viking } from "./type_perso/vikings";
+import { Parramettre_metier } from "./parrametres_metier";
 import { Bouclier } from "./équipements/bouclier";
 
 export class Commbat{
     private _viking_1: Viking;
     private _viking_2: Viking;
+    private _archer_1: Archer;
 
-    constructor(viking_1:Viking, viking_2:Viking) { 
+
+
+    constructor(viking_1:Viking, viking_2:Viking, archer_2: Archer) { 
         this._viking_1 = viking_1
         this._viking_2 = viking_2
+        this._archer_1 = archer_2
     }
 
     public lancer_combat(): void {
@@ -20,7 +26,7 @@ export class Commbat{
         let attaquant = this._viking_1
         let defenseur = this._viking_2
         
-        while (this._viking_1.estVivant() && this._viking_2.estVivant()) {
+        while (attaquant.estVivant() && defenseur.estVivant()) {
             const forcePourCeTour = attaquant.recupererForce()
             console.log(`${attaquant.name_get} attaque, sa force est de ${forcePourCeTour}`);
             defenseur.prendDesDegats(forcePourCeTour) 
@@ -33,7 +39,6 @@ export class Commbat{
        }
     }
 
-
     public getGagnan() {
         if (this._viking_1.sante_get > this._viking_2.sante_get) {
             console.log("le vainqueur est",this._viking_1.name_get);
@@ -42,7 +47,6 @@ export class Commbat{
             console.log("le vainqueur est",this._viking_2.name_get);
         }
     }
-
 
 
 

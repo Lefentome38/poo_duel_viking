@@ -23,3 +23,6 @@ export class Bouclier{
         this._defense = defense_set
     }
 }
+
+export const bouclierV2 = new Bouclier("Thorgal",3)
+export const bouclierV1 = new Bouclier("Dome d'Acier",4)
