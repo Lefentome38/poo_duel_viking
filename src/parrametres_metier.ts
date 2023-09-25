@@ -1,5 +1,6 @@
 import { Bouclier } from "./équipements/bouclier"
-
+import { Equipement } from "./équipements/equipements"
+// class mère
 export class Parramettre_metier{
 
     private _name: string
@@ -10,12 +11,9 @@ export class Parramettre_metier{
     private _mana: number
     private _critique: number
 
-    private _bouclier: Bouclier
-    private _arme: string
-    
+    private _equipement: Equipement
 
-
-    constructor( name: string, sante: number, force: number,critique:number, intelligence:number, mana:number , vitesse: number, bouclier:Bouclier, arme: string){
+    constructor( name: string, sante: number, force: number,critique:number, intelligence:number, mana:number , vitesse: number, equipement: Equipement){
         this._name = name
         this._sante = sante
         this._force = force
@@ -23,9 +21,8 @@ export class Parramettre_metier{
         this. _intelligence = intelligence
         this. _mana = mana
         this._critique = critique
-        
-        this._bouclier = bouclier
-        this._arme = arme
+
+        this._equipement = equipement
     }
 
     estVivant(){
@@ -37,26 +34,36 @@ export class Parramettre_metier{
     }
 
     prendDesDegats(degats: number){
-        let chancecritique = Math.floor(Math.random()*101)           
-        if(chancecritique <= (10 + this._critique)) {
+        let chancecritique = Math.floor(Math.random()*101)
+        let degat_pris = 0
+        
+        if(degats < this._equipement.defense){
+            if(this.hasBouclier()){
+                degat_pris = this.getBouclier().degatspare(degats)
+            }
+        }
+
+        else if(chancecritique <= (10 + this._critique)) {
             degats *= 2
             console.log(`critique réussie: ${degats} de dégats`);
         }
         
-        else if (degats < this._bouclier.defense_get) {
-            degats = 0
-            console.log(`${this._name} à paré, dégat ${degats}`);
-        }       
-        
-        this._sante = this._sante - degats
+        else{
+            degat_pris = degats
+        }
+
+        this._sante = this._sante - degat_pris
     }
+
+
+
 
     attaque(adversaire: Parramettre_metier){
         adversaire.prendDesDegats(this.recupererForce())
     }
 
     info_viking(){
-        console.log(`${this._name} ${this._sante}hp, arme '${this._arme}' bouclier '${this._bouclier.b_name_get}' de résistence ${this.bouclier_get.defense_get}, chance critique "+${this._critique}%"`);
+        console.log(`${this._name} ${this._sante}hp, équipement de type bouclier '${this._equipement.name}' de résistence ${this._equipement.defense}, chance critique "+${this._critique}%"`);
     }
     info_archer(){
         console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
@@ -65,6 +72,23 @@ export class Parramettre_metier{
         console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
     }
 
+    hasBouclier(){
+        return this._equipement.type === "Bouclier"
+    } 
+    getBouclier(){
+        return this._equipement as Bouclier
+    }
+    
+
+
+ /* 
+////////////////////////////////////////////////////////////////////////////////////////////////
+  ____      _   _                                  _            _   _                
+ / ___| ___| |_| |_ ___ _ __ ___    __ _ _ __   __| |  ___  ___| |_| |_ ___ _ __ ___ 
+| |  _ / _ \ __| __/ _ \ '__/ __|  / _` | '_ \ / _` | / __|/ _ \ __| __/ _ \ '__/ __|
+| |_| |  __/ |_| ||  __/ |  \__ \ | (_| | | | | (_| | \__ \  __/ |_| ||  __/ |  \__ \
+ \____|\___|\__|\__\___|_|  |___/  \__,_|_| |_|\__,_| |___/\___|\__|\__\___|_|  |___/*/
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     public get name_get():string {
@@ -116,17 +140,17 @@ export class Parramettre_metier{
         this._critique = critique_set
     }
 
-    public get bouclier_get():Bouclier {
-        return this._bouclier;
+    public get bouclier():Equipement {
+        return this._equipement;
     }
     public set bouclier(bouclier_set: Bouclier) {
-        this._bouclier = bouclier_set
+        this.bouclier = bouclier_set
     }
 
     public get arme_get():string {
-        return this._arme;
+        return this.arme;
     }
     public set arme(arme_set: string) {
-        this._arme = arme_set
+        this.arme = arme_set
     }
 }

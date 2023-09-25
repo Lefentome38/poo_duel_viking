@@ -1,38 +1,29 @@
 import { Archer } from "./type_perso/archer";
 import { Viking } from "./type_perso/vikings";
 import { Chevalier } from "./type_perso/chevalier";
+import { Personnage } from "./type_perso/personnage";
 
 export class Commbat{
-    private _viking_1: Viking;
-    private _viking_2: Viking;
-    private _archer_1: Archer;
-    private _chevalier_1: Chevalier
+    private _P_1: Personnage;
+    private _P_2: Personnage;
 
     private _combattant: []
 
-
-    constructor(viking_1:Viking, viking_2:Viking, archer_2: Archer, chevalier_1:Chevalier) { 
-        this._viking_1 = viking_1
-        this._viking_2 = viking_2
-        this._archer_1 = archer_2
-        this._chevalier_1 = chevalier_1
-
-        this._combattant = []
-    }
-
-    lescombattans(){
+    constructor(p1: Personnage, p2:Personnage ) {
+        this._P_1 = p1
+        this._P_2 = p2
         this._combattant = []
     }
 
     public lancer_combat() {
-        console.log(`le combat va commencer: nos deux combattans sont '${this._viking_1.name_get}' et '${this._viking_2.name_get}'`);
+        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.name}' et '${this._P_2.name}'`);
     }
 
     public simulation_combat() {
         console.log("debut de la simulation");
         
-        let attaquant = this._viking_1
-        let defenseur = this._viking_2
+        let attaquant = this._P_1
+        let defenseur = this._P_2
         
         while (attaquant.estVivant() && defenseur.estVivant()) {
             const forcePourCeTour = attaquant.recupererForce()
@@ -48,27 +39,11 @@ export class Commbat{
     }
 
     public getGagnan() {
-        if (this._viking_1.sante_get > this._viking_2.sante_get) {
-            console.log("le vainqueur est",this._viking_1.name_get);
+        if (this._P_1.sante_get > this._P_2.sante_get) {
+            console.log("le vainqueur est",this._P_1.name_get);
         }
         else{
-            console.log("le vainqueur est",this._viking_2.name_get);
+            console.log("le vainqueur est",this._P_2.name_get);
         }
     }
-
-
-
-    public get viking_2_get(): Viking {
-        return this._viking_2;
-    }
-    public set viking_2(viking_2_set: Viking) {
-        this._viking_2 = viking_2_set;
-    }
-
-    public get viking_1_get(): Viking {
-        return this._viking_1;
-    }
-    public set viking_1(viking_1_set: Viking) {
-        this._viking_1 = viking_1_set;
-    }
-} 
+}

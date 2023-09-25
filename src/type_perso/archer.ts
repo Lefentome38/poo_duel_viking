@@ -10,7 +10,7 @@ export class Archer extends Parramettre_metier{
         let mana : number = 10
         let vitesse : number = 3
 
-        super(name, sante, force, critique, intelligence, mana, vitesse, bouclier, arme)
+        super(name, sante, force, critique, intelligence, mana, vitesse, bouclier)
     }
 }
 
