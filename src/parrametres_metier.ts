@@ -63,13 +63,13 @@ export class Parramettre_metier{
     }
 
     info_viking(){
-        console.log(`${this._name} ${this._sante}hp, équipement de type bouclier '${this._equipement.name}' de résistence ${this._equipement.defense}, chance critique "+${this._critique}%"`);
+        console.log(`${this._name} ${this._sante}hp, équipement de type ${this._equipement.type} '${this._equipement.name}' de résistence ${this._equipement.defense}, chance critique "+${this._critique}%"`);
     }
     info_archer(){
         console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
     }
     info_chavalier(){
-        console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
+        console.log(`${this._name} ${this._sante}hp, équipement de type ${this._equipement.type} '${this._equipement.name}' de force ${this._equipement.force}, chance critique "+${this._critique}%"`);
     }
 
     hasBouclier(){

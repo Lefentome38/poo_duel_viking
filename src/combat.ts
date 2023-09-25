@@ -16,7 +16,7 @@ export class Commbat{
     }
 
     public lancer_combat() {
-        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.name}' et '${this._P_2.name}'`);
+        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.name_get}' et '${this._P_2.name_get}'`);
     }
 
     public simulation_combat() {
