@@ -1,4 +1,5 @@
 import { Equipement } from "./equipements"
+import { Personnage } from "../type_perso/personnage"
 
 export class Bouclier extends Equipement{
 
@@ -9,9 +10,9 @@ export class Bouclier extends Equipement{
     }
 
     degatspare(degats:number): number{
-        if (degats <= this.defense) {
+        if (degats <= this.defense_equipement) {
             degats = 0
-            console.log(`${this.name} à paré, dégat ${degats}`);
+            console.log(`${this.type} à paré, dégat ${degats}`);
             return 0
         }
         else{
@@ -19,6 +20,7 @@ export class Bouclier extends Equipement{
         }  
     }
 }
+
 
 
 

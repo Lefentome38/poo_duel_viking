@@ -1,8 +1,9 @@
+import { log } from "console"
 import { Bouclier } from "./équipements/bouclier"
 import { Equipement } from "./équipements/equipements"
+
 // class mère
 export class Parramettre_metier{
-
 
     private _name: string = ""
     private _sante: number = 0
@@ -37,8 +38,8 @@ export class Parramettre_metier{
     prendDesDegats(degats: number){
         let chancecritique = Math.floor(Math.random()*101)
         let degat_pris = 0
-        
-        if(degats < this._equipement.defense){
+                
+        if(degats < this._equipement.defense_equipement){
             if(this.hasBouclier()){
                 degat_pris = this.getBouclier().degatspare(degats)
             }
@@ -55,9 +56,6 @@ export class Parramettre_metier{
 
         this._sante = this._sante - degat_pris
     }
-
-
-
 
     attaque(adversaire: Parramettre_metier){
         adversaire.prendDesDegats(this.recupererForce())
@@ -85,64 +83,64 @@ export class Parramettre_metier{
     public get name_bonus():string {
         return this._name;
     }
-    public set name(value: string) {
+    public set name_bonus(value: string) {
         this._name = value
     }
 
     public get sante_bonus():number {
         return this._sante;
     }
-    public set sante(value: number) {
+    public set sante_bonus(value: number) {
         this._sante = value
     }
 
     public get force_bonus():number {
         return this._force;
     }
-    public set force(value: number) {
+    public set force_bonus(value: number) {
         this._force = value
     }
 
     public get vitesse_bonus(): number {
         return this._vitesse
     }
-    public set vitesse(value: number) {
+    public set vitesse_bonus(value: number) {
         this._vitesse = value
     }
 
     public get intelligence_bonus(): number {
         return this._intelligence
     }
-    public set intelligence(value: number) {
+    public set intelligence_bonus(value: number) {
         this._intelligence = value
     }
 
     public get mana_bonus(): number {
         return this._mana
     }
-    public set mana(value: number) {
+    public set mana_bonus(value: number) {
         this._mana = value
     }
 
     public get critique_bonus(): number {
         return this._critique
     }
-    public set critique(value: number) {
+    public set critique_bonus(value: number) {
         this._critique = value
     }
 
     public get bouclier_bonus():Equipement {
         return this._equipement;
     }
-    public set bouclier(value: Bouclier) {
-        this.bouclier = value
+    public set bouclier_bonus(value: Bouclier) {
+        this.bouclier_bonus = value
     }
 
     public get arme_bonus():string {
-        return this.arme;
+        return this.arme_bonus;
     }
-    public set arme(value: string) {
-        this.arme = value
+    public set arme_bonus(value: string) {
+        this.arme_bonus = value
     }
     
     public get equipement_bonus(): Equipement {

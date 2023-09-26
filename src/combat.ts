@@ -16,7 +16,7 @@ export class Commbat{
     }
 
     public lancer_combat() {
-        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' et '${this._P_2.nom_cumuler}'`);
+        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' et '${this._P_3.nom_cumuler}'`);
     }
 
     public simulation_combat() {
@@ -25,11 +25,11 @@ export class Commbat{
         let attaquant = this._P_1
         let defenseur = this._P_2
         
-        while (attaquant.estVivant() && defenseur.estVivant()) {
-            const forcePourCeTour = attaquant.recupererForce()
-            console.log(`${attaquant.name_get} attaque, sa force est de ${forcePourCeTour}`);
-            defenseur.prendDesDegats(forcePourCeTour) 
-            console.log(`${defenseur.name_get} à ${defenseur.sante_get}hp restant`);
+        while (attaquant.jobP.estVivant() && defenseur.jobP.estVivant()) {
+            const forcePourCeTour = attaquant.jobP.recupererForce()
+            console.log(`${attaquant.nom_cumuler} attaque, sa force est de ${forcePourCeTour}`);
+            defenseur.jobP.prendDesDegats(forcePourCeTour) 
+            console.log(`${defenseur.nom_cumuler} à ${defenseur.jobP.sante_bonus}hp restant`);
             console.log()
 
             const intermediaire = attaquant
@@ -39,11 +39,11 @@ export class Commbat{
     }
 
     public getGagnan() {
-        if (this._P_1.sante_get > this._P_2.sante_get) {
-            console.log("le vainqueur est",this._P_1.name_get);
+        if (this._P_1.sante_cumuler > this._P_2.sante_cumuler) {
+            console.log("le vainqueur est",this._P_1.nom_cumuler);
         }
         else{
-            console.log("le vainqueur est",this._P_2.name_get);
+            console.log("le vainqueur est",this._P_2.nom_cumuler);
         }
     }
 }
