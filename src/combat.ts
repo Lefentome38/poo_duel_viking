@@ -1,17 +1,17 @@
-import { Archer } from "./type_perso/archer";
-import { Viking } from "./type_perso/vikings";
-import { Chevalier } from "./type_perso/chevalier";
 import { Personnage } from "./type_perso/personnage";
 
 export class Commbat{
     private _P_1: Personnage;
     private _P_2: Personnage;
+    private _P_3: Personnage;
+
 
     private _combattant: []
 
-    constructor(p1: Personnage, p2:Personnage ) {
+    constructor(p1: Personnage, p2:Personnage, p3:Personnage ) {
         this._P_1 = p1
         this._P_2 = p2
+        this._P_3 = p3
         this._combattant = []
     }
 

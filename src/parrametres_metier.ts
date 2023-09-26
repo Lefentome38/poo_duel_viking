@@ -3,24 +3,25 @@ import { Equipement } from "./équipements/equipements"
 // class mère
 export class Parramettre_metier{
 
-    private _name: string
-    private _sante: number 
-    private _force: number
-    private _vitesse: number
-    private _intelligence: number
-    private _mana: number
-    private _critique: number
+
+    private _name: string = ""
+    private _sante: number = 0
+    private _force: number = 0
+    private _critique: number = 0
+    private _intelligence: number = 0
+    private _mana: number = 0
+    private _vitesse: number = 0
 
     private _equipement: Equipement
 
-    constructor( name: string, sante: number, force: number,critique:number, intelligence:number, mana:number , vitesse: number, equipement: Equipement){
+    constructor(name:string,sante:number,force:number,critique:number,intelligence:number,mana:number,vitesse:number,equipement:Equipement){
         this._name = name
         this._sante = sante
         this._force = force
-        this._vitesse = vitesse
+        this._critique = critique
         this. _intelligence = intelligence
         this. _mana = mana
-        this._critique = critique
+        this._vitesse = vitesse
 
         this._equipement = equipement
     }
@@ -62,16 +63,6 @@ export class Parramettre_metier{
         adversaire.prendDesDegats(this.recupererForce())
     }
 
-    info_viking(){
-        console.log(`${this._name} ${this._sante}hp, équipement de type ${this._equipement.type} '${this._equipement.name}' de résistence ${this._equipement.defense}, chance critique "+${this._critique}%"`);
-    }
-    info_archer(){
-        console.log(`${this._name} ${this._sante}hp, chance critique "+${this._critique}%"`);
-    }
-    info_chavalier(){
-        console.log(`${this._name} ${this._sante}hp, équipement de type ${this._equipement.type} '${this._equipement.name}' de force ${this._equipement.force}, chance critique "+${this._critique}%"`);
-    }
-
     hasBouclier(){
         return this._equipement.type === "Bouclier"
     } 
@@ -91,66 +82,73 @@ export class Parramettre_metier{
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    public get name_get():string {
+    public get name_bonus():string {
         return this._name;
     }
-    public set name(name_set: string) {
-        this._name = name_set
+    public set name(value: string) {
+        this._name = value
     }
 
-    public get sante_get():number {
+    public get sante_bonus():number {
         return this._sante;
     }
-    public set sante(sante_set: number) {
-        this._sante = sante_set
+    public set sante(value: number) {
+        this._sante = value
     }
 
-    public get force_get():number {
+    public get force_bonus():number {
         return this._force;
     }
-    public set force(force_set: number) {
-        this._force = force_set
+    public set force(value: number) {
+        this._force = value
     }
 
-    public get vitesse(): number {
+    public get vitesse_bonus(): number {
         return this._vitesse
     }
-    public set vitesse(vitesse_set: number) {
-        this._vitesse = vitesse_set
+    public set vitesse(value: number) {
+        this._vitesse = value
     }
 
-    public get intelligence_get(): number {
+    public get intelligence_bonus(): number {
         return this._intelligence
     }
-    public set intelligence(intelligence_set: number) {
-        this._intelligence = intelligence_set
+    public set intelligence(value: number) {
+        this._intelligence = value
     }
 
-    public get mana_get(): number {
+    public get mana_bonus(): number {
         return this._mana
     }
-    public set mana(mana_set: number) {
-        this._mana = mana_set
+    public set mana(value: number) {
+        this._mana = value
     }
 
-    public get critique_get(): number {
+    public get critique_bonus(): number {
         return this._critique
     }
-    public set critique(critique_set: number) {
-        this._critique = critique_set
+    public set critique(value: number) {
+        this._critique = value
     }
 
-    public get bouclier():Equipement {
+    public get bouclier_bonus():Equipement {
         return this._equipement;
     }
-    public set bouclier(bouclier_set: Bouclier) {
-        this.bouclier = bouclier_set
+    public set bouclier(value: Bouclier) {
+        this.bouclier = value
     }
 
-    public get arme_get():string {
+    public get arme_bonus():string {
         return this.arme;
     }
-    public set arme(arme_set: string) {
-        this.arme = arme_set
+    public set arme(value: string) {
+        this.arme = value
+    }
+    
+    public get equipement_bonus(): Equipement {
+        return this._equipement
+    }
+    public set equipement_bonus(value: Equipement) {
+        this._equipement = value
     }
 }

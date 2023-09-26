@@ -17,28 +17,28 @@ export class Equipement{
         this._defense = defense
     }
 
-    public get name(): string {
+    public get name_equipement(): string {
         return this._name
     }
     public set name(value: string) {
         this._name = value
     }
 
-    public get critique(): number {
+    public get critique_equipement(): number {
         return this._critique
     }
-    public set critique(value: number) {
+    public set critique_equipement(value: number) {
         this._critique = value
    }
 
-    public get force(): number {
+    public get force_equipement(): number {
         return this._force
     }
-    public set force(value: number) {
+    public set force_equipement(value: number) {
         this._force = value
     }
     
-    public get defense(): number {
+    public get defense_equipement(): number {
         return this._defense
     }
     public set defense(value: number) {
