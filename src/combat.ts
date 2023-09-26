@@ -16,7 +16,7 @@ export class Commbat{
     }
 
     public lancer_combat() {
-        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' et '${this._P_3.nom_cumuler}'`);
+        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' santé de départ ${this._P_1.sante_cumuler} et '${this._P_2.nom_cumuler}'`);
     }
 
     public simulation_combat() {

@@ -1,4 +1,3 @@
-import { log } from "console"
 import { Bouclier } from "./équipements/bouclier"
 import { Equipement } from "./équipements/equipements"
 
