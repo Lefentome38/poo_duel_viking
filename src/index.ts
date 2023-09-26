@@ -8,7 +8,7 @@ import { Personnage,combatant1,combatant2,combatant3 } from "./type_perso/person
 
 const commbat1 = new Commbat(combatant1,combatant2,combatant3)
 
-    // commbat1.lancer_combat();
+    commbat1.lancer_combat();
     // console.log();
     // commbat1.simulation_combat();
     // console.log();
