@@ -25,50 +25,7 @@ export class Parramettre_metier{
 
         this._equipement = equipement
     }
-
-    estVivant(){
-        return this._sante > 0
-    }  
-
-    recupererForce(){
-        return Math.floor(Math.random() * this._force + 1) 
-    }
-
-    prendDesDegats(degats: number){
-        let chancecritique = Math.floor(Math.random()*101)
-        let degat_pris = 0
-                
-        if(degats < this._equipement.defense_equipement){
-            if(this.hasBouclier()){
-                degat_pris = this.getBouclier().degatspare(degats)
-            }
-        }
-
-        else if(chancecritique <= (10 + this._critique)) {
-            degats *= 2
-            console.log(`critique réussie: ${degats} de dégats`);
-        }
-        
-        else{
-            degat_pris = degats
-        }
-
-        this._sante = this._sante - degat_pris
-    }
-
-    attaque(adversaire: Parramettre_metier){
-        adversaire.prendDesDegats(this.recupererForce())
-    }
-
-    hasBouclier(){
-        return this._equipement.type === "Bouclier"
-    } 
-    getBouclier(){
-        return this._equipement as Bouclier
-    }
     
-
-
  /* 
 ////////////////////////////////////////////////////////////////////////////////////////////////
   ____      _   _                                  _            _   _                
@@ -77,7 +34,6 @@ export class Parramettre_metier{
 | |_| |  __/ |_| ||  __/ |  \__ \ | (_| | | | | (_| | \__ \  __/ |_| ||  __/ |  \__ \
  \____|\___|\__|\__\___|_|  |___/  \__,_|_| |_|\__,_| |___/\___|\__|\__\___|_|  |___/*/
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     public get name_bonus():string {
         return this._name;

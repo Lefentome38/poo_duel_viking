@@ -25,11 +25,11 @@ export class Commbat{
         let attaquant = this._P_1
         let defenseur = this._P_2
         
-        while (attaquant.jobP.estVivant() && defenseur.jobP.estVivant()) {
-            const forcePourCeTour = attaquant.jobP.recupererForce()
+        while (attaquant.estVivant() && defenseur.estVivant()) {
+            const forcePourCeTour = attaquant.recupererForce()
             console.log(`${attaquant.nom_cumuler} attaque, sa force est de ${forcePourCeTour}`);
-            defenseur.jobP.prendDesDegats(forcePourCeTour) 
-            console.log(`${defenseur.nom_cumuler} à ${defenseur.jobP.sante_bonus}hp restant`);
+            defenseur.prendDesDegats(forcePourCeTour) 
+            console.log(`${defenseur.nom_cumuler} à ${defenseur.sante_cumuler}hp restant`);
             console.log()
 
             const intermediaire = attaquant

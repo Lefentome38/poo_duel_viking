@@ -1,5 +1,5 @@
 import { Parramettre_metier } from "../parrametres_metier"
-import { bouclierV1, bouclierV2 } from "../équipements/bouclier"
+import { Bouclier,bouclierV1, bouclierV2 } from "../équipements/bouclier"
 import { EpeeV1 } from "../équipements/epee"
 import { Equipement } from "../équipements/equipements"
 import { Chevalier, Chevalier1 } from "./chevalier"
@@ -30,14 +30,56 @@ export class Personnage {
     }
 
     info_viking() {
-        console.log(`${this.job.name_bonus} ${this.job.sante_bonus}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de résistence ${this._type_equipement.defense_equipement}, chance critique "+${this._critique_base}%"`);
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de résistence ${this._type_equipement.defense_equipement}, chance critique "+${this._critique_base}%"`);
     }
     info_chavalier() {
-        console.log(`${this.job.name_bonus} ${this.job.sante_bonus}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%"`);
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%"`);
     }
     info_archer() {
-        console.log(`${this.job.name_bonus} ${this.job.sante_bonus}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%"`);
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%"`);
     }
+
+    estVivant(){
+        return this.sante_cumuler > 0
+    }
+
+    recupererForce(){
+        return Math.floor(Math.random() * this.force_cumuler + 1) 
+    }
+
+    prendDesDegats(degats: number){
+        let chancecritique = Math.floor(Math.random()*101)
+        let degat_pris = 0
+                
+        if(degats < this._type_equipement.defense_equipement){
+            if(this.hasBouclier()){
+                degat_pris = this.getBouclier().degatspare(degats)
+            }
+        }
+
+        else if(chancecritique <= (10 + this.critique_cumuler)) {
+            degat_pris = degats *= 2
+            console.log(`critique réussie: ${degats} de dégats`);
+        }
+        
+        else{
+            degat_pris = degats
+        }
+
+        this.sante_cumuler = this.sante_cumuler - degat_pris
+    }
+
+    attaque(adversaire: Personnage){
+        adversaire.prendDesDegats(this.recupererForce())
+    }
+
+    hasBouclier(){
+        return this._type_equipement.type === "Bouclier"
+    } 
+    getBouclier(){
+        return this._type_equipement as Bouclier
+    }
+
 
  /* 
 ////////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,9 @@ import { Personnage,combatant1,combatant2,combatant3 } from "./type_perso/person
 
 const commbat1 = new Commbat(combatant1,combatant2,combatant3)
 
+    combatant1.info_viking();
+    combatant2.info_viking();
+    console.log();
     commbat1.lancer_combat();
     console.log();
     commbat1.simulation_combat();
@@ -19,7 +22,8 @@ const commbat1 = new Commbat(combatant1,combatant2,combatant3)
     console.log();
     Viking1.info_viking_class()
     Viking2.info_viking_class()
+
     // combatant3.info_chavalier()
     // Viking1.info_viking_class()
-    // Chevalier1.info_chevalier_class()
+    Chevalier1.info_chevalier_class()
     // combatant3.info_chavalier()

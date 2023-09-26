@@ -17,12 +17,8 @@ export class Bouclier extends Equipement{
         }
         else{
             return degats
-        }  
+        }
     }
 }
-
-
-
-
 export const bouclierV1 = new Bouclier("dome d'acier",4)
 export const bouclierV2 = new Bouclier("turis",3)
