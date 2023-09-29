@@ -1,29 +1,27 @@
-import { Viking,Viking1, Viking2 } from "./type_perso/vikings";
+import { Viking1, Viking2 } from "./type_perso/vikings";
+import { Archer1 } from "./type_perso/archer";
+import { Chevalier1 } from "./type_perso/chevalier";
 import { Commbat } from "./combat";
-import { Archer,A1 } from "./type_perso/archer";
-import { Chevalier,Chevalier1 } from "./type_perso/chevalier";
-import { Equipement } from "./équipements/equipements";
-import { Bouclier } from "./équipements/bouclier";
-import { Personnage,combatant1,combatant2,combatant3 } from "./type_perso/personnage";
+import { combatant1_viking1,combatant2_viking2,combatant3_chevalier1,combatant4_archer1 } from "./type_perso/personnage";
 
-const commbat1 = new Commbat(combatant1,combatant2,combatant3)
+const commbat1 = new Commbat(combatant1_viking1, combatant2_viking2, combatant3_chevalier1, combatant4_archer1)
 
-    combatant1.info_viking();
-    combatant2.info_viking();
-    console.log();
     commbat1.lancer_combat();
     console.log();
     commbat1.simulation_combat();
     console.log();
     commbat1.getGagnan();
     console.log();
-    combatant1.info_viking();
-    combatant2.info_viking();
+    
+    combatant1_viking1.info_viking(); //les valeurs peuvent changer avec le combat
+    combatant2_viking2.info_viking(); //les valeurs peuvent changer avec le combat
+    combatant3_chevalier1.info_chavalier(); //les valeurs peuvent changer avec le combat
+    combatant4_archer1.info_archer(); //les valeurs peuvent changer avec le combat
+
     console.log();
     Viking1.info_viking_class()
     Viking2.info_viking_class()
-
-    // combatant3.info_chavalier()
-    // Viking1.info_viking_class()
+    console.log();
     Chevalier1.info_chevalier_class()
-    // combatant3.info_chavalier()
+    console.log();
+    Archer1.info_archer_class()

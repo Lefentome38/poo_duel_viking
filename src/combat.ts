@@ -4,25 +4,27 @@ export class Commbat{
     private _P_1: Personnage;
     private _P_2: Personnage;
     private _P_3: Personnage;
+    private _P_4: Personnage;
 
 
     private _combattant: []
 
-    constructor(p1: Personnage, p2:Personnage, p3:Personnage ) {
+    constructor(p1: Personnage, p2:Personnage, p3:Personnage, p4:Personnage ) {
         this._P_1 = p1
         this._P_2 = p2
         this._P_3 = p3
+        this._P_4 = p4
         this._combattant = []
     }
 
     public lancer_combat() {
-        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' santé de départ ${this._P_1.sante_cumuler} et '${this._P_2.nom_cumuler}'`);
+        console.log(`le combat va commencer: nos deux combattans sont '${this._P_1.nom_cumuler}' santé de départ ${this._P_1.sante_cumuler} et '${this._P_2.nom_cumuler}' santé de départ ${this._P_1.sante_cumuler}`);
     }
 
-    public simulation_combat() {
+    public simulation_combat() { 
         console.log("debut de la simulation");
         
-        let attaquant = this._P_1
+        let attaquant = this._P_3 // ici le chois des combatant pour le duel (_P_3 et _P_2) !Attention aussi dans la 'méthode getgagnan'
         let defenseur = this._P_2
         
         while (attaquant.estVivant() && defenseur.estVivant()) {
@@ -39,8 +41,8 @@ export class Commbat{
     }
 
     public getGagnan() {
-        if (this._P_1.sante_cumuler > this._P_2.sante_cumuler) {
-            console.log("le vainqueur est",this._P_1.nom_cumuler);
+        if (this._P_3.sante_cumuler > this._P_2.sante_cumuler) {
+            console.log("le vainqueur est",this._P_3.nom_cumuler);
         }
         else{
             console.log("le vainqueur est",this._P_2.nom_cumuler);

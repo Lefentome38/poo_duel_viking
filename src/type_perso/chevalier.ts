@@ -1,5 +1,5 @@
 import { Parramettre_metier } from "../parrametres_metier";
-import { Epee,EpeeV1 } from "../équipements/epee";
+import { EpeeV1 } from "../équipements/epee";
 import { Equipement } from "../équipements/equipements";
 
 export class Chevalier extends Parramettre_metier{
@@ -7,7 +7,7 @@ export class Chevalier extends Parramettre_metier{
     constructor(
         name:string = "chevalier",
         sante:number = 40,
-        force:number = 10,
+        force:number = 5 + EpeeV1.force_equipement,
         critique:number = 3,
         intelligence:number = 1,
         mana:number = 5,
@@ -17,7 +17,7 @@ export class Chevalier extends Parramettre_metier{
         super(name, sante, force, critique, intelligence, mana, vitesse, type_equipement)
     }
     info_chevalier_class(){
-        console.log(`class ${this.nom_class}: ${this.name_bonus} ${this.sante_bonus}hp, équipement de type ${this.equipement_bonus.type} '${this.equipement_bonus.name_equipement}' de force ${this.equipement_bonus.force_equipement}, chance critique "+${this.critique_bonus}%"`);
+        console.log(`class ${this.nom_class}: ${this.name_bonus} ${this.sante_bonus}hp, force ${this.force_bonus}, équipement de type ${this.equipement_bonus.type} '${this.equipement_bonus.name_equipement}' de force ${this.equipement_bonus.force_equipement}, chance critique "+${this.critique_bonus}%"`);
     }
 }
 

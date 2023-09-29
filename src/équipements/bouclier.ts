@@ -1,5 +1,4 @@
 import { Equipement } from "./equipements"
-import { Personnage } from "../type_perso/personnage"
 
 export class Bouclier extends Equipement{
 

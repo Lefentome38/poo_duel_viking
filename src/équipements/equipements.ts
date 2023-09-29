@@ -1,6 +1,4 @@
-import { Bouclier } from "./bouclier"
-
-export type EquipmentType = "Bouclier" | "Epee" | "armure"
+export type EquipmentType = "Bouclier" | "Epee" | "armure" | "Arc"
 
 export class Equipement{    
     private _name: string

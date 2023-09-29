@@ -2,7 +2,7 @@ import { Bouclier } from "./équipements/bouclier"
 import { Equipement } from "./équipements/equipements"
 
 // class mère
-export class Parramettre_metier{
+export abstract class Parramettre_metier{
 
     private _name: string = ""
     private _sante: number = 0
