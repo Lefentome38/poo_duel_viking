@@ -1,6 +1,7 @@
 export interface IObjet{
-    prix:number
-    poids:number
+    prix:number;
+    poids:number;
+    name:string;
 
-    utiliser:() => {}
+    utiliser:() => string
 }

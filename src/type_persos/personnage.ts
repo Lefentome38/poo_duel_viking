@@ -1,11 +1,17 @@
 import { Parramettre_metier } from "../parrametres_metier"
-import { arcV1 } from "../équipements/arc"
-import { Bouclier,bouclierV1, bouclierV2 } from "../équipements/bouclier"
-import { EpeeV1 } from "../équipements/epee"
-import { Equipement } from "../équipements/equipements"
-import { Archer1 } from "./archer"
+// import { arcV1 } from "../équipements/arc"
+// import { Bouclier,bouclierV1, bouclierV2 } from "../équipements/bouclier"
+import { EpeeV1, EpeeV2 } from "../objets/equipables/armes/epee"
+import { bouclierV1, bouclierV2 } from "../objets/equipables/armures/bouclier"
+// import { Equipement } from "../équipements/equipements"
+import { Equipable } from "../objets/equipables/equipables"
+import { Arme } from "../objets/equipables/armes/arme"
+// import { Archer1 } from "./archer"
 import { Chevalier1 } from "./chevalier"
 import { Viking1, Viking2 } from "./vikings"
+import { Armure } from "../objets/equipables/armures/armure"
+import { HacheV1 } from "../objets/equipables/armes/hache"
+import { Bouclier } from "../objets/equipables/armures/bouclier"
 
 export class Personnage {
     private _nom: string = ""
@@ -17,9 +23,11 @@ export class Personnage {
     private _mana_base: number = 10 //50
     private _vitesse_base: number = 2 //10
 
-    private _type_equipement: Equipement
+    private _equipableArme: Arme
+    private _equipableArmure: Armure
 
-    constructor(job: Parramettre_metier, type_equipement: Equipement) {
+
+    constructor(job:Parramettre_metier, equipableArme:Arme, equipementArmure:Armure) {
         this.job = job
         this._sante_base = this._sante_base + this.job.sante_bonus
         this._force_base = this.force_cumuler + this.job.force_bonus
@@ -28,18 +36,19 @@ export class Personnage {
         this._mana_base = this.mana_cumuler + this.job.mana_bonus
         this._vitesse_base = this.vitesse_cumuler + this.job.vitesse_bonus
 
-        this._type_equipement = type_equipement
+        this._equipableArme = equipableArme
+        this._equipableArmure = equipementArmure
     }
 
     info_viking() {
-        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de résistence ${this._type_equipement.defense_equipement}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._equipableArmure.typeEquitable} '${this._equipableArmure.name_armure}' de résistence ${this._equipableArmure.defence_armure}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
     }
     info_chavalier() {
-        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._equipableArme.typeEquitable} '${this._equipableArme.name_arme}' de force ${this._equipableArme.force_arme}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
     }
-    info_archer() {
-        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
-    }
+    // info_archer() {
+    //     console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
+    // }
 
     estVivant(){
         return this.sante_cumuler > 0
@@ -53,7 +62,7 @@ export class Personnage {
         let chancecritique = Math.floor(Math.random()*101)
         let degat_pris = 0
                 
-        if(degats < this._type_equipement.defense_equipement){
+        if(degats < this._equipableArmure.defence_armure){
             if(this.hasBouclier()){
                 degat_pris = this.getBouclier().degatspare(degats)
             }
@@ -76,10 +85,10 @@ export class Personnage {
     }
 
     hasBouclier(){
-        return this._type_equipement.type === "Bouclier"
+        return this._equipableArmure.typeEquitable === "Bouclier"
     } 
     getBouclier(){
-        return this._type_equipement as Bouclier
+        return this._equipableArmure as Bouclier
     }
 
 
@@ -148,7 +157,7 @@ export class Personnage {
         this._vitesse_base = value
     }
 }
-export const combatant1_viking1 = new Personnage(Viking1, bouclierV1)
-export const combatant2_viking2 = new Personnage(Viking2, bouclierV2)
-export const combatant3_chevalier1 = new Personnage(Chevalier1, EpeeV1)
-export const combatant4_archer1 = new Personnage(Archer1,arcV1)
+export const combatant1_viking1 = new Personnage(Viking1, EpeeV1, bouclierV1) // perso | arme | armure
+export const combatant2_viking2 = new Personnage(Viking2, HacheV1,bouclierV2)
+export const combatant3_chevalier1 = new Personnage(Chevalier1, EpeeV1,bouclierV1)
+export const combatant4_archer1 = new Personnage(Chevalier1,EpeeV1,bouclierV1)

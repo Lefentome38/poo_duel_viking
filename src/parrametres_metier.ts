@@ -1,6 +1,5 @@
-import { Bouclier } from "./équipements/bouclier"
-import { Equipement } from "./équipements/equipements"
-
+import { Bouclier } from "./objets/equipables/armures/bouclier"
+import { Equipable } from "./objets/equipables/equipables"
 // class mère
 export abstract class Parramettre_metier{
 
@@ -12,9 +11,9 @@ export abstract class Parramettre_metier{
     private _mana: number = 0
     private _vitesse: number = 0
 
-    private _equipement: Equipement
+    private _equipement: Equipable
 
-    constructor(name:string,sante:number,force:number,critique:number,intelligence:number,mana:number,vitesse:number,equipement:Equipement){
+    constructor(name:string,sante:number,force:number,critique:number,intelligence:number,mana:number,vitesse:number,equipement:Equipable){
         this._name = name
         this._sante = sante
         this._force = force
@@ -84,7 +83,7 @@ export abstract class Parramettre_metier{
         this._critique = value
     }
 
-    public get bouclier_bonus():Equipement {
+    public get bouclier_bonus():Equipable {
         return this._equipement;
     }
     public set bouclier_bonus(value: Bouclier) {
@@ -98,10 +97,10 @@ export abstract class Parramettre_metier{
         this.arme_bonus = value
     }
     
-    public get equipement_bonus(): Equipement {
+    public get equipement_bonus(): Equipable {
         return this._equipement
     }
-    public set equipement_bonus(value: Equipement) {
+    public set equipement_bonus(value: Equipable) {
         this._equipement = value
     }
 }
