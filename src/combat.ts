@@ -1,4 +1,4 @@
-import { Personnage } from "./type_perso/personnage";
+import { Personnage } from "./type_persos/personnage";
 
 export class Commbat{
     private _P_1: Personnage;
@@ -24,7 +24,7 @@ export class Commbat{
     public simulation_combat() { 
         console.log("debut de la simulation");
         
-        let attaquant = this._P_3 // ici le chois des combatant pour le duel (_P_3 et _P_2) !Attention aussi dans la 'méthode getgagnan'
+        let attaquant = this._P_1 // ici le chois des combatant pour le duel (_P_1 et _P_2) !Attention aussi dans la 'méthode getgagnan'
         let defenseur = this._P_2
         
         while (attaquant.estVivant() && defenseur.estVivant()) {
@@ -41,8 +41,8 @@ export class Commbat{
     }
 
     public getGagnan() {
-        if (this._P_3.sante_cumuler > this._P_2.sante_cumuler) {
-            console.log("le vainqueur est",this._P_3.nom_cumuler);
+        if (this._P_1.sante_cumuler > this._P_2.sante_cumuler) {
+            console.log("le vainqueur est",this._P_1.nom_cumuler);
         }
         else{
             console.log("le vainqueur est",this._P_2.nom_cumuler);
