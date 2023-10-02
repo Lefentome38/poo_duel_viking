@@ -20,13 +20,13 @@ console.log();
     combatant1_viking1.info_viking(); //les valeurs peuvent changer avec le combat
     combatant2_viking2.info_viking(); //les valeurs peuvent changer avec le combat
     combatant3_chevalier1.info_chavalier(); //les valeurs peuvent changer avec le combat
-    // combatant4_archer1.info_archer(); //les valeurs peuvent changer avec le combat
+    combatant4_archer1.info_archer(); //les valeurs peuvent changer avec le combat
 
-    console.log();
-    Chevalier1.info_chevalier_class();
-    Viking1.info_viking_class();
-    Viking2.info_viking_class();
-    console.log();
-    Chevalier1.info_chevalier_class()
-    console.log();
+    // console.log();
+    // Chevalier1.info_chevalier_class();
+    // Viking1.info_viking_class();
+    // Viking2.info_viking_class();
+    // console.log();
+    // Chevalier1.info_chevalier_class()
+    // console.log();
     // Archer1.info_archer_class()

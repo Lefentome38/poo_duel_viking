@@ -1,4 +1,3 @@
-import { type } from "os";
 import { IObjet } from "../Iobjet"
 export type EquipmentType = "Bouclier" | "Epee" | "armure" | "Arc" | "Hache"
 

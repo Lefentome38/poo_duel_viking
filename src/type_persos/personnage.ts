@@ -1,10 +1,9 @@
 import { Parramettre_metier } from "../parrametres_metier"
 // import { arcV1 } from "../équipements/arc"
 // import { Bouclier,bouclierV1, bouclierV2 } from "../équipements/bouclier"
-import { EpeeV1, EpeeV2 } from "../objets/equipables/armes/epee"
-import { bouclierV1, bouclierV2 } from "../objets/equipables/armures/bouclier"
+import { EpeeV1} from "../objets/equipables/armes/epee"
+import { bouclierV0, bouclierV1, bouclierV2 } from "../objets/equipables/armures/bouclier"
 // import { Equipement } from "../équipements/equipements"
-import { Equipable } from "../objets/equipables/equipables"
 import { Arme } from "../objets/equipables/armes/arme"
 // import { Archer1 } from "./archer"
 import { Chevalier1 } from "./chevalier"
@@ -12,6 +11,8 @@ import { Viking1, Viking2 } from "./vikings"
 import { Armure } from "../objets/equipables/armures/armure"
 import { HacheV1 } from "../objets/equipables/armes/hache"
 import { Bouclier } from "../objets/equipables/armures/bouclier"
+import { Archer1 } from "./archer"
+import { ArcV1 } from "../objets/equipables/armes/arc"
 
 export class Personnage {
     private _nom: string = ""
@@ -46,9 +47,9 @@ export class Personnage {
     info_chavalier() {
         console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._equipableArme.typeEquitable} '${this._equipableArme.name_arme}' de force ${this._equipableArme.force_arme}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
     }
-    // info_archer() {
-    //     console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._type_equipement.type} '${this._type_equipement.name_equipement}' de force ${this._type_equipement.force_equipement}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
-    // }
+    info_archer() {
+        console.log(`${this.job.name_bonus} ${this.sante_cumuler}hp, équipement de type ${this._equipableArme.typeEquitable} '${this._equipableArme.name_arme}' de force ${this._equipableArme.force_arme}, chance critique "+${this._critique_base}%" force d'attaque ${this.force_cumuler}`);
+    }
 
     estVivant(){
         return this.sante_cumuler > 0
@@ -160,4 +161,4 @@ export class Personnage {
 export const combatant1_viking1 = new Personnage(Viking1, EpeeV1, bouclierV1) // perso | arme | armure
 export const combatant2_viking2 = new Personnage(Viking2, HacheV1,bouclierV2)
 export const combatant3_chevalier1 = new Personnage(Chevalier1, EpeeV1,bouclierV1)
-export const combatant4_archer1 = new Personnage(Chevalier1,EpeeV1,bouclierV1)
+export const combatant4_archer1 = new Personnage(Archer1,ArcV1,bouclierV0)
